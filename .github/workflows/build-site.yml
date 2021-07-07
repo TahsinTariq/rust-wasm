@@ -18,7 +18,11 @@ jobs:
             nvm install 10
             curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
             mkdir -p docs
+            ls
             rm -rf ./docs/*
+            ls
+            cd ../
+            ls
             for d in */ ; do
             echo "$pwd $d"
             cd /$d && wasm-pack build
