@@ -18,18 +18,31 @@ jobs:
             nvm install 10
             curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
             mkdir -p docs
+            # for d in * ; do
+            # if "$d" != "docs"
+            # then
+            # echo "current dir: $pwd lopping dir: $d"
+            # cd $d && wasm-pack build
+            # cd www && npm install
+            # npm run build
+            # mkdir ../../docs/$d
+            # mv ./dist/* ../../docs/$d
+            # cd ../../
+            # fi
+            # done
+            docs="docs"
             for d in * ; do
-            if "$d" != "docs"
-            then
+            if [[ "$d" != "$docs" ]]; then
             echo "current dir: $pwd lopping dir: $d"
             cd $d && wasm-pack build
             cd www && npm install
             npm run build
             mkdir ../../docs/$d
-            mv ./dist/* ../../docs/$d
             cd ../../
+            mv ./dist/* ../../docs/$d
             fi
             done
+
             # cd game-of-life && wasm-pack build
             # cd www && npm install
             # npm run build
