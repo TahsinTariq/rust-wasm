@@ -23,9 +23,6 @@ jobs:
             rm -rf ./docs/*
             echo "after deleting docs contents, ls:"
             ls
-            cd ../
-            echo "after cd ../, ls:"
-            ls
             for d in */ ; do
             if [$d != "docs"]
             then
