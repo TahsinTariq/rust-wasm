@@ -38,8 +38,8 @@ jobs:
             cd www && npm install
             npm run build
             mkdir ../../docs/$d
-            cd ../../
             mv ./dist/* ../../docs/$d
+            cd ../../
             fi
             done
 
