@@ -24,17 +24,20 @@ jobs:
             echo "after deleting docs contents, ls:"
             ls
             for d in */ ; do
-            if [$d != "docs"]
-            then
-            echo "current dir: $pwd lopping dir: $d"
-            cd $d && wasm-pack build
-            cd www && npm install
-            npm run build
-            mkdir ../../docs/$d
-            mv ./dist/* ../../docs/$d
-            cd ../../
-            fi
+            echo "$d"
             done
+            # for d in */ ; do
+            # if [$d != "docs"]
+            # then
+            # echo "current dir: $pwd lopping dir: $d"
+            # cd $d && wasm-pack build
+            # cd www && npm install
+            # npm run build
+            # mkdir ../../docs/$d
+            # mv ./dist/* ../../docs/$d
+            # cd ../../
+            # fi
+            # done
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
