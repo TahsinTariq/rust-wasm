@@ -20,8 +20,9 @@ jobs:
             mkdir -p docs
             rm -rf ./docs/*
             for d in */ ; do
-            cd ./$d && wasm-pack build
-            cd ./$d/www && npm install
+            echo "$pwd $d"
+            cd /$d && wasm-pack build
+            cd /$d/www && npm install
             npm run build
             mkdir /docs/$d
             mv ./dist/* /docs/$d
