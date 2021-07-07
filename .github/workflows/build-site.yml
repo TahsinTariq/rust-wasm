@@ -21,6 +21,7 @@ jobs:
             mkdir -p docs
             docs="docs"
             for d in * ; do
+            if [ -d "$d" ]; then
             if [[ "$d" != "$docs" ]]; then
             echo "working on dir: $d"
             cd $d && wasm-pack build
@@ -34,6 +35,7 @@ jobs:
             mkdir ../../docs/$d
             mv ./dist/* ../../docs/$d
             cd ../../
+            fi
             fi
             done
 
