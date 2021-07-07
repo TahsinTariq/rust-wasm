@@ -1,0 +1,34 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+
+      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+        run: |
+            rustup target add wasm32-unknown-unknown
+            curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+            source ~/.nvm/nvm.sh
+            nvm install 10
+            curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+            mkdir -p docs
+            rm -rf ./docs/*
+            for d in */ ; do
+            cd ./$d && wasm-pack build
+            cd ./$d/www && npm install
+            npm run build
+            mkdir /docs/$d
+            mv ./dist/* /docs/$d
+            done
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: docs # The folder the action should deploy.
