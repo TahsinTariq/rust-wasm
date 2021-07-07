@@ -25,9 +25,9 @@ jobs:
             echo "working on dir: $d"
             cd $d && wasm-pack build
             cd pkg
-            for d in *.wasm ; do
-            echo "optimizing wasm $d"
-            wasm-opt -O3 -o $d $d
+            for wd in *.wasm ; do
+            echo "optimizing wasm $wd"
+            wasm-opt -O3 -o $wd $wd
             done
             cd ../www && npm install
             npm run build
