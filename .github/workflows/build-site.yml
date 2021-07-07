@@ -26,18 +26,23 @@ jobs:
             # for d in * ; do
             # echo "$d"
             # done
-            for d in * ; do
-            if [$d != "docs"]
-            then
-            echo "current dir: $pwd lopping dir: $d"
-            cd $d && wasm-pack build
+            # for d in * ; do
+            # if [$d != "docs"]
+            # then
+            # echo "current dir: $pwd lopping dir: $d"
+            # cd $d && wasm-pack build
+            # cd www && npm install
+            # npm run build
+            # mkdir ../../docs/$d
+            # mv ./dist/* ../../docs/$d
+            # cd ../../
+            # fi
+            # done
+            cd game-of-life && wasm-pack build
             cd www && npm install
             npm run build
-            mkdir ../../docs/$d
-            mv ./dist/* ../../docs/$d
-            cd ../../
-            fi
-            done
+            mkdir ../../docs/game
+            mv ./dist/* ../../docs/game
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
