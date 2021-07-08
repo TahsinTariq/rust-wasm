@@ -12,8 +12,8 @@ const ALIVE_COLOR = "#5e81ac";
 // Construct the universe, and get its width and height.
 const n = 70;
 // const universe = Universe.new(128, 72);
-const universe = Universe.new(150, 100);
-// const universe = Universe.new(256, 144);
+// const universe = Universe.new(150, 100);
+const universe = Universe.new(256, 144);
 // const universe = Universe.new(512, 144 * 2);
 // const universe = Universe.new(70, 50);
 // const universe = Universe.new(n, n);
