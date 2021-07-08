@@ -8,32 +8,28 @@ const GRID_COLOR = "#8bdeee";
 const DEAD_COLOR = "#88c0d0";
 const ALIVE_COLOR = "#5e81ac";
 
-
+const rez = document.getElementById("rez");
 // Construct the universe, and get its width and height.
-const n = 70;
-// const universe = Universe.new(128, 72);
-// const universe = Universe.new(150, 100);
-const universe = Universe.new(256, 144);
-// const universe = Universe.new(512, 144 * 2);
-// const universe = Universe.new(70, 50);
-// const universe = Universe.new(n, n);
-const width = universe.width();
-const height = universe.height();
+
+var universe = Universe.new(128, 72);
+var width = universe.width();
+var height = universe.height();
 
 // Give the canvas room for all of our cells and a 1px border
 // around each of them.
-const canvas = document.getElementById("game-of-life");
+var canvas = document.getElementById("game-of-life");
 const slider = document.getElementById("range");
 canvas.height = (CELL_SIZE + 1) * height + 1;
 canvas.width = (CELL_SIZE + 1) * width + 1;
 
-const ctx = canvas.getContext('2d');
+var ctx = canvas.getContext('2d');
 
 let rangess = 1;
 
 slider.oninput = () => {
     rangess = slider.value;
     // console.log(range)
+
 }
 let animationId = null;
 const renderLoop = () => {
@@ -75,6 +71,7 @@ dead_button.addEventListener("click", event => {
 
 const play = () => {
     playPauseButton.textContent = "⏸ Pause";
+    // playPauseButton.textContent = `${rez.value}`;
     renderLoop();
 };
 
@@ -183,6 +180,27 @@ const drawCells = () => {
 };
 
 
+
+rez.addEventListener('change', event => {
+    if (rez.value == "4k") {
+        universe = Universe.new(256, 144);
+    }
+    if (rez.value == "2k") {
+        universe = Universe.new(192, 108);
+    }
+    if (rez.value == "1k") {
+        universe = Universe.new(128, 72);
+    }
+    width = universe.width();
+    height = universe.height();
+    canvas.height = (CELL_SIZE + 1) * height + 1;
+    canvas.width = (CELL_SIZE + 1) * width + 1;
+    ctx = canvas.getContext('2d');
+    drawCells();
+
+});
+
+
 canvas.addEventListener("click", event => {
     const boundingRect = canvas.getBoundingClientRect();
 
@@ -207,7 +225,6 @@ canvas.addEventListener("click", event => {
     else {
         universe.toggle_cell(row, col);
     }
-
     // drawGrid();
     drawCells();
 });

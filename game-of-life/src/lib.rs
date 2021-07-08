@@ -132,6 +132,12 @@ impl Universe {
         let _timer = Timer::new("replace old cells");
         self.cells = next;
     }
+    #[allow(clippy::new_without_default)]
+    pub fn re_render(&mut self, width: u32, height: u32) {
+        self.set_width(width);
+        self.set_height(height);
+        self.set_random();
+    }
 
     #[allow(clippy::new_without_default)]
     pub fn new(width: u32, height: u32) -> Universe {
