@@ -58,6 +58,15 @@
       color: #e5e9f0;
       font-weight: bold;
     }
+
+    select {
+      border-radius: 0.5em;
+      padding: 0.75em 1em;
+      border: none;
+      background-color: #4C566A;
+      color: #e5e9f0;
+      font-weight: bold;
+    }
   </style>
 </head>
 
@@ -102,6 +111,14 @@
     <div class="container-lg">
       <div class="col-lg-12 ">
         <div class="mt-5">
+          <!-- Dropdown HTML -->
+          <select name="Render Resolution" id="rez">
+            <option value="" selected="selected">Render Resolution</option>
+            <option value="1k">1080p</option>
+            <option value="2k">1620p</option>
+            <option value="4k">2160p</option>
+          </select>
+          <!-- dropdown end -->
           <div class="text-right col" id="fps"></div>
           <canvas class="col" id="game-of-life"></canvas>
         </div>
@@ -123,14 +140,15 @@
         <p class="text-left">
           Pause, reset the board or kill all the cells in the board with the buttons
         </p>
-        If you're on a computer,
-        <ul><code>CTRL+CLICK</code> to insert a <a
-            href="https://en.wikipedia.org/wiki/Glider_(Conway%27s_Life)">Glider</a></ul>
-        <ul><code>SHIFT+CLICK</code> to insert a <a href="https://www.conwaylife.com/wiki/Pulsar">Pulser</a></ul>
-        <ul><code>CTRL+SHIFT+CLICK</code> to insert <a href="https://conwaylife.com/wiki/Gosper_glider_gun">Gosper's
-            Glider Gun</a>
-        </ul>
         <p class="text-left">
+          If you're on a computer,
+        <ul><code>CLICK</code> to toggle the state of a cell.</ul>
+        <ul><code>CTRL+CLICK</code> to insert a <a
+            href="https://en.wikipedia.org/wiki/Glider_(Conway%27s_Life)">Glider</a>.</ul>
+        <ul><code>SHIFT+CLICK</code> to insert a <a href="https://www.conwaylife.com/wiki/Pulsar">Pulser</a>.</ul>
+        <ul><code>CTRL+SHIFT+CLICK</code> to insert <a href="https://conwaylife.com/wiki/Gosper_glider_gun">Gosper's
+            Glider Gun</a>.
+        </ul>
 
         </p>
       </div>
