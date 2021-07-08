@@ -5,15 +5,16 @@ import { Universe, Cell } from "wasm-game-of-life";
 
 const CELL_SIZE = 15; // px
 const GRID_COLOR = "#8bdeee";
-const DEAD_COLOR = "#06a6c6";
-const ALIVE_COLOR = "#3e097b";
+const DEAD_COLOR = "#88c0d0";
+const ALIVE_COLOR = "#5e81ac";
 
 
 // Construct the universe, and get its width and height.
 const n = 70;
-const universe = Universe.new(256, 144);
+// const universe = Universe.new(128, 72);
+const universe = Universe.new(150, 100);
+// const universe = Universe.new(256, 144);
 // const universe = Universe.new(512, 144 * 2);
-// const universe = Universe.new(150, 100);
 // const universe = Universe.new(70, 50);
 // const universe = Universe.new(n, n);
 const width = universe.width();
@@ -73,12 +74,12 @@ dead_button.addEventListener("click", event => {
 });
 
 const play = () => {
-    playPauseButton.textContent = "⏸";
+    playPauseButton.textContent = "⏸ Pause";
     renderLoop();
 };
 
 const pause = () => {
-    playPauseButton.textContent = "▶";
+    playPauseButton.textContent = "▶ Resume";
     cancelAnimationFrame(animationId);
     animationId = null;
 };
@@ -245,13 +246,14 @@ const fps = new class {
         let mean = sum / this.frames.length;
 
         // Render the statistics.
-        this.fps.textContent = `
-  Frames per Second:
-           latest = ${Math.round(fps)}
-  avg of last 100 = ${Math.round(mean)}
-  min of last 100 = ${Math.round(min)}
-  max of last 100 = ${Math.round(max)}
-  `.trim();
+        this.fps.textContent = `Average fps last 100 frames = ${Math.round(mean)}`.trim();
+        //         this.fps.textContent = `
+        //   Frames per Second:
+        //            latest = ${Math.round(fps)}
+        //   avg of last 100 = ${Math.round(mean)}
+        //   min of last 100 = ${Math.round(min)}
+        //   max of last 100 = ${Math.round(max)}
+        //   `.trim();
     }
 };
 
