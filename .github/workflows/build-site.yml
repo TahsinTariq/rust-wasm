@@ -33,6 +33,7 @@ jobs:
             cd ../www && npm install
             npm run build
             mkdir ../../docs/$d
+            mv ./*.png ../../docs/$d
             mv ./dist/* ../../docs/$d
             cd ../../
             fi
