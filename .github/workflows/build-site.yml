@@ -33,7 +33,9 @@ jobs:
             cd ../www && npm install
             npm run build
             mkdir ../../docs/$d
-            mv *.png ../../docs/$d
+            for pngs in *.png ; do
+            mv pngs ../../docs/$d
+            done
             mv ./dist/* ../../docs/$d
             cd ../../
             fi
