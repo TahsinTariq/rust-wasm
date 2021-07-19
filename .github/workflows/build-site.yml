@@ -20,9 +20,11 @@ jobs:
             curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
             mkdir -p docs
             docs="docs"
+            img="images"
             for d in * ; do
             if [ -d "$d" ]; then
             if [[ "$d" != "$docs" ]]; then
+            if [[ "$d" != "$img" ]]; then
             echo "working on dir: $d"
             cd $d && wasm-pack build
             cd pkg
@@ -33,13 +35,13 @@ jobs:
             cd ../www && npm install
             npm run build
             mkdir ../../docs/$d
-            for pngs in *.png ; do
-            mv pngs ../../docs/$d
-            done
             mv ./dist/* ../../docs/$d
             cd ../../
             fi
             fi
+            fi
+            mkdir ../../docs/images
+            mv ../../images/* ../../docs/images
             done
 
       - name: Deploy 🚀
