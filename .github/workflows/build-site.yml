@@ -19,6 +19,7 @@ jobs:
             nvm install 10
             curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
             mkdir -p docs
+            mkdir ./docs/images
             docs="docs"
             img="images"
             for d in * ; do
@@ -40,7 +41,6 @@ jobs:
             fi
             fi
             fi
-            mkdir ../../docs/images
             mv ../../images/* ../../docs/images
             done
 
